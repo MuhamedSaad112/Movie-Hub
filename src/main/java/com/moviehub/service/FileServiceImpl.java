@@ -10,7 +10,6 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
 @Service
 public class FileServiceImpl implements FileService {
@@ -38,7 +37,7 @@ public class FileServiceImpl implements FileService {
         }
 
         // Copy the file to the target location, replacing existing file if necessary
-        Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+        Files.copy(file.getInputStream(), filePath);
 
         return fileName;
     }

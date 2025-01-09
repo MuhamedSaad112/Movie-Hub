@@ -5,7 +5,6 @@ import com.moviehub.service.FileService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
@@ -37,17 +36,18 @@ public class FileController {
         return ResponseEntity.ok("File Uploaded  " + uploadFileName);
     }
 
+//    @GetMapping("{fileName}")
+//    public void serveFileHandler(@PathVariable String fileName, HttpServletResponse response) throws IOException {
+//
+//        InputStream resourceFile = fileService.getResourceFile(path, fileName);
+//
+//        response.setContentType(MediaType.IMAGE_PNG_VALUE);
+//
+//        StreamUtils.copy(resourceFile, response.getOutputStream());
+//    }
+
+    //    @GetMapping("/video/{fileName}")
     @GetMapping("{fileName}")
-    public void serveFileHandler(@PathVariable String fileName, HttpServletResponse response) throws IOException {
-
-        InputStream resourceFile = fileService.getResourceFile(path, fileName);
-
-        response.setContentType(MediaType.IMAGE_PNG_VALUE);
-
-        StreamUtils.copy(resourceFile, response.getOutputStream());
-    }
-
-    @GetMapping("/video/{fileName}")
     public void serveVideoHandler(@PathVariable String fileName, HttpServletResponse response) throws IOException {
 
         // الحصول على الفيديو كـ InputStream
